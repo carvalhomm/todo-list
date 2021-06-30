@@ -1,24 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.scss';
+import { TodoCreator } from './app/todo-creator/todo-creator';
+import { AssignmentList } from './app/assignment-list/assignment-list';
+import { Tarefa } from './models/tarefa.interface';
 
 function App() {
+  const [tarefa, setTarefa] = useState<Tarefa>();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todo-list">
+      <TodoCreator setTarefa={setTarefa}></TodoCreator>
+      <AssignmentList tarefa={tarefa}></AssignmentList>
     </div>
   );
 }
