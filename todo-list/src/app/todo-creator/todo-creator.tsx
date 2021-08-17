@@ -8,20 +8,23 @@ interface TodoCreatorInput {
 }
 
 export function TodoCreator({ setTarefa }: TodoCreatorInput) {
-  const getInput = () => {
-    const inputNode = document.getElementById('input-todo') as any;
-    const tarefa: Tarefa = {
-      checked: false,
-      name: inputNode.value
-    };
-    setTarefa(tarefa);
+  const getInput = (key: string) => {
+    if (key && key === 'Enter') {
+      const inputNode = document.getElementById('input-todo') as any;
+      const tarefa: Tarefa = {
+        checked: false,
+        name: inputNode.value
+      };
+      inputNode.value = '';
+      setTarefa(tarefa);
+    }
   };
 
   return (
     <div className="todo-creator">
       <span className="todo-text">Criar nova tarefa</span>
-      <Input type="text" id="input-todo"></Input>
-      <Button className="todo-button" onClick={() => getInput()}>Criar tarefa</Button>
+      <Input type="text" id="input-todo" onKeyUp={(event) => getInput(event.key)}></Input>
+      <Button className="todo-button" onClick={() => getInput('Enter')}>Criar tarefa</Button>
     </div>
   );
 }

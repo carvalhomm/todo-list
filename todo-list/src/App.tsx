@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="todo-list">
       <TodoCreator setTarefa={setTarefa}></TodoCreator>
-      <AssignmentList tarefa={tarefa}></AssignmentList>
+      <AssignmentList tarefa={tarefa} setTarefa={setTarefa}></AssignmentList>
     </div>
   );
 }

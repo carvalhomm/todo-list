@@ -13,4 +13,10 @@
     font-weight: 500;
     font-size: 18px;
   }
+  .close-icon {
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
 }
